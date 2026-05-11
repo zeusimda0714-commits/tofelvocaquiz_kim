@@ -113,8 +113,8 @@ function renderFlash() {
     </div>
     <p class="feedback">카드를 뒤집어 뜻을 확인한 뒤 표시하세요.</p>
   `;
-  els.panel.querySelector("[data-mark='know']").addEventListener("click", () => mark(true));
-  els.panel.querySelector("[data-mark='again']").addEventListener("click", () => mark(false));
+  els.panel.querySelector("[data-mark='know']").addEventListener("click", () => { mark(true); autoNext(350); });
+  els.panel.querySelector("[data-mark='again']").addEventListener("click", () => { mark(false); autoNext(350); });
 }
 
 function renderChoice(item) {
@@ -272,6 +272,15 @@ function setFeedback(ok, text) {
   feedback.textContent = text;
   feedback.className = `feedback ${ok ? "good" : "bad"}`;
   if (!ok) els.card.classList.add("flipped");
+  if (ok) autoNext(900);
+}
+
+function autoNext(delay) {
+  if (!deck.length) return;
+  const expected = index;
+  window.setTimeout(() => {
+    if (index === expected) move(1);
+  }, delay);
 }
 
 function mark(ok) {
