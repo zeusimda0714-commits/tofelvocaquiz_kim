@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>스마트토플 보카 카드 퀴즈</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <section class="topbar" aria-label="학습 설정">
+      <div>
+        <p class="eyebrow">Smart TOEFL Voca</p>
+        <h1>보카 카드 퀴즈</h1>
+      </div>
+      <div class="controls">
+        <label>
+          교재
+          <select id="sourceSelect"></select>
+        </label>
+        <label>
+          Day
+          <select id="daySelect"></select>
+        </label>
+        <label>
+          모드
+          <select id="modeSelect">
+            <option value="flash">카드</option>
+            <option value="match">동의어 매칭</option>
+            <option value="spell">철자</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section class="status">
+      <div>
+        <span>카드</span>
+        <strong id="countText">0 / 0</strong>
+      </div>
+      <div>
+        <span>점수</span>
+        <strong id="scoreText">0</strong>
+      </div>
+      <div>
+        <span>연속 정답</span>
+        <strong id="streakText">0</strong>
+      </div>
+      <button id="shuffleBtn" type="button" title="카드 섞기">섞기</button>
+    </section>
+
+    <section class="stage">
+      <article class="card" id="card" tabindex="0" aria-live="polite">
+        <div class="card-face card-front">
+          <p id="cardMeta">Day 1</p>
+          <h2 id="wordText">word</h2>
+          <p id="hintText">클릭하면 뜻을 볼 수 있어요</p>
+        </div>
+        <div class="card-face card-back">
+          <p>뜻</p>
+          <h2 id="meaningText">meaning</h2>
+          <p id="synonymText"></p>
+        </div>
+      </article>
+
+      <div class="quiz-panel" id="quizPanel"></div>
+
+      <div class="actions">
+        <button id="prevBtn" type="button">이전</button>
+        <button id="flipBtn" type="button">뒤집기</button>
+        <button id="nextBtn" type="button">다음</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="voca-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
